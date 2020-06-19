@@ -8,6 +8,7 @@
     android:background="@color/colorPrimaryDark">
 
     <ImageView
+        android:id="@+id/checklist"
         android:layout_width="118dp"
         android:layout_height="142dp"
         android:src="@drawable/checklist"
@@ -19,7 +20,7 @@
         app:layout_constraintVertical_bias="0.129" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/store"
         android:layout_width="186dp"
         android:layout_height="343dp"
         android:src="@drawable/invetory"
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="Keep Track of Your Inventory With"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/store"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/store"
         app:layout_constraintVertical_bias="0.114" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
