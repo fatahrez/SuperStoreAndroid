@@ -1,4 +1,4 @@
 package com.moringaschool.asuper;
 
-public class Login {
+public class DefaultResponse {
 }
