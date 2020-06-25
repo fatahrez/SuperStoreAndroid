@@ -1,4 +1,6 @@
-package com.moringaschool.asuper;
+package com.moringaschool.asuper.api;
+
+import com.google.gson.Gson;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -6,7 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private static final String BASE_URL = "https://api-shop-url.herokuapp.com/";
     private static RetrofitClient mInstance;
-    private Retrofit retrofit;
+    private static Retrofit retrofit;
+    private static Gson gson;
+
 
     private RetrofitClient(){
         retrofit = new Retrofit.Builder()
@@ -20,9 +24,15 @@ public class RetrofitClient {
             mInstance = new RetrofitClient();
         }
         return mInstance;
-    }
+        }
+
+        // changes //
 
     public SuperApi getSuperApi(){
         return retrofit.create(SuperApi.class);
+    }
+
+    public SuperApi create(Class<SuperApi> superApiClass) {
+        return null;
     }
 }

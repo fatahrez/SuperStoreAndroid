@@ -21,8 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.moringaschool.asuper.LoginActivity" android:theme="@style/AppTheme" />
-        <activity android:name="com.moringaschool.asuper.RegisterActivity" android:theme="@style/AppTheme" />
+        <activity android:name="com.moringaschool.asuper.activities.LoginActivity" android:theme="@style/AppTheme" />
+        <activity android:name="com.moringaschool.asuper.activities.RegisterActivity" android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

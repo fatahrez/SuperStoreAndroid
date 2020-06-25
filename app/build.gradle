@@ -1,8 +1,20 @@
 apply plugin: 'com.android.application'
 
+ //or apply plugin: 'java'
+//apply plugin: 'me.tatarka.retrolambda'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+
+    // new dependencies//
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+    // new dependencies//
 
     defaultConfig {
         applicationId "com.moringaschool.asuper"

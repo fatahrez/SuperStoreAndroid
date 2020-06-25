@@ -1,26 +1,24 @@
-package com.moringaschool.asuper;
+package com.moringaschool.asuper.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.moringaschool.asuper.ui.MainActivity;
+import com.moringaschool.asuper.api.ApiInstance;
+import com.moringaschool.asuper.api.RetrofitClient;
+import com.moringaschool.asuper.models.DefaultResponse;
+import com.moringaschool.asuper.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText email, password, username, first_name, last_name;
 
@@ -35,8 +33,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         first_name = findViewById(R.id.first_name);
         last_name = findViewById(R.id.last_name);
 
-        findViewById(R.id.registration).setOnClickListener(this);
-        findViewById(R.id.createText).setOnClickListener(this);
+        findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.createText).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void userSignUp() {
@@ -86,72 +94,66 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             last_name.setError("Last Name required");
             last_name.requestFocus();
             return;
+        }
 
-            /* Do user registration using the api call*/
-
-        Call<ResponseBody> call = RetrofitClient
+        Call<DefaultResponse> call = RetrofitClient
                 .getInstance()
                 .getSuperApi()
                 .createClerk(Email, Password, UserName, FirstName, LastName);
 
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+        call.enqueue(new Callback<DefaultResponse>() {
+        @Override
+        public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
 
-                String s = null;
+            if (response.code() == 201) {
 
-                try {
-                    if (response.code() == 201) {
-                        s = response.body().string();
-                    } else {
-                        s = response.errorBody().string();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                DefaultResponse defaultResponse = response.body();
+                Toast.makeText(RegisterActivity.this, defaultResponse.getMsg(), Toast.LENGTH_LONG).show();
 
-                if (s != null){
-                    try{
-                        JSONObject jsonObject = new JSONObject(s);
-                        Toast.makeText(MainActivity.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-
-                    } catch (JSONException e){
-                        e.printStackTrace();
-                    }
-                }
-
+            } else if (response.code() == 422) {
+                Toast.makeText(RegisterActivity.this, "User already exist", Toast.LENGTH_LONG).show();
             }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-
         }
 
         @Override
-        public void onClick; (View v){
-            switch (v.getId()) {
-                case R.id.registration:
+        public void onFailure(Call<DefaultResponse> call, Throwable t) {
 
-                    break;
-                case R.id.createText:
-
-                    break;
-            }
-        };
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.registration:
-
-                break;
-            case R.id.createText:
-
-                break;
         }
+    });
+
+        /* Do user registration using the api call*/
+
     }
-}
+
+//    @Override
+//    public  void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.registration:
+//                userSignUp();
+//                break;
+//            case R.id.createText:
+//
+//                break;
+//        }
+
+
+
+        // ApiInstance //
+
+//            ApiInstance.store().createClerk
+//                    (Email, Password, UserName , FirstName, LastName).enqueue(new Callback<DefaultResponse>() {
+//                @Override
+//                public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<DefaultResponse> call, Throwable t) {
+//
+//                }
+//            });
+
+
+        }
+
+

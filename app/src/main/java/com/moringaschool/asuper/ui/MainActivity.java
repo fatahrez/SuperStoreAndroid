@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.moringaschool.asuper.R;
+import com.moringaschool.asuper.activities.LoginActivity;
+import com.moringaschool.asuper.activities.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN = 5000;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, MerchantActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
             }
