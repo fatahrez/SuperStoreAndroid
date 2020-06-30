@@ -2,6 +2,11 @@ package com.moringaschool.asuper.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.moringaschool.asuper.ServiceGenerator;
+import com.moringaschool.asuper.SuperApi;
+import com.moringaschool.asuper.models.Admin;
+import com.moringaschool.asuper.models.Login;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +16,22 @@ import android.widget.EditText;
 
 import com.moringaschool.asuper.R;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class LoginActivity extends AppCompatActivity {
 
+    //Variables
     Button signUp;
     Button login;
     EditText mEmail, mPassword;
+
+    //Retrofit
+    Retrofit.Builder builder = new Retrofit.Builder()
+            .baseUrl("https://api-shop-url.herokuapp.com/login/")
+            .addConverterFactory(GsonConverterFactory.create());
+    Retrofit retrofit = builder.build();
+    SuperApi api = retrofit.create(SuperApi.class);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -7,6 +7,11 @@ public class Admin {
     private String emailAddress;
     private String token;
     private String password;
+    private String shop;
+
+    public String getShop() {
+        return shop;
+    }
 
     public String getFirstName() {
         return firstName;
