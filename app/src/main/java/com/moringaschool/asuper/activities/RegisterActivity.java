@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         if (Password.length() < 8) {
-            editTextpassword.setError("Password should be atleast 6 character long");
+            editTextpassword.setError("Password should be atleast 8 character long");
             editTextpassword.requestFocus();
             return;
         }
