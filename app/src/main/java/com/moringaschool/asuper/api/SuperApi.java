@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface SuperApi {
 
     @FormUrlEncoded
-    @POST("/register-merchant/")
+    @POST("register-clerk")
     Call<DefaultResponse> createClerk(
             @Field("username") String Username,
             @Field("password") String Password,
@@ -23,7 +23,7 @@ public interface SuperApi {
     );
 
     @FormUrlEncoded
-    @POST("userlogin")
+    @POST("userLogin")
     Call<LoginResponse> userLogin(
             @Field("Email_l") String Email,
             @Field("password_l") String Password

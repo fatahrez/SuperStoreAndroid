@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         if (Password.length() < 8) {
-            editTextpassword.setError("Password should be atleast 8 character long");
+            editTextpassword.setError("Password should be at least 8 character long");
             editTextpassword.requestFocus();
             return;
         }
@@ -127,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.registration:
                 userSignUp();
-//                startActivity(new Intent(this, ClerkActivity.class));
                 break;
             case R.id.createText:
                 startActivity(new Intent(this, LoginActivity.class));
