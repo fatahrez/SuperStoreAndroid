@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.moringaschool.asuper.R;
 import com.moringaschool.asuper.activities.LoginActivity;
 import com.moringaschool.asuper.activities.RegisterActivity;
+//import com.moringaschool.asuper.activities.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN = 5000;

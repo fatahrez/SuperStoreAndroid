@@ -12,24 +12,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.moringaschool.asuper.R;
 import com.moringaschool.asuper.api.RetrofitClient;
 import com.moringaschool.asuper.models.LoginResponse;
+import com.moringaschool.asuper.ui.ClerkActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText Email_l;
-    private EditText password_l;
+    private EditText editTextEmail_l;
+    private EditText editTextpassword_l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Email_l = findViewById(R.id.Email_l);
-        password_l = findViewById(R.id.password_l);
+        editTextEmail_l = findViewById(R.id.Email_l);
+        editTextpassword_l = findViewById(R.id.password_l);
 
         findViewById(R.id.loginBtn_l).setOnClickListener((View.OnClickListener) this);
         findViewById(R.id.createText_l).setOnClickListener((View.OnClickListener) this);
@@ -37,30 +38,30 @@ public class LoginActivity extends AppCompatActivity {
 
     private void userLogin(){
 
-        String Email = Email_l.getText().toString().trim();
-        String Password = password_l.getText().toString().trim();
+        String Email = editTextEmail_l.getText().toString().trim();
+        String Password = editTextpassword_l.getText().toString().trim();
 
         if (Email.isEmpty()) {
-            Email_l.setError("Email is required");
-            Email_l.requestFocus();
+            editTextEmail_l.setError("Email is required");
+            editTextEmail_l.requestFocus();
             return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
-            Email_l.setError("Enter a valid email");
-            Email_l.requestFocus();
+            editTextEmail_l.setError("Enter a valid email");
+            editTextEmail_l.requestFocus();
             return;
         }
 
         if (Password.isEmpty()) {
-            password_l.setError("Password is required");
-            password_l.requestFocus();
+            editTextpassword_l.setError("Password is required");
+            editTextpassword_l.requestFocus();
             return;
         }
 
         if (Password.length() < 8) {
-            password_l.setError("Password should be atleast 6 character long");
-            password_l.requestFocus();
+            editTextpassword_l.setError("Password should be atleast 6 character long");
+            editTextpassword_l.requestFocus();
             return;
         }
 
@@ -91,18 +92,20 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
 
-//    @Override
-//    public void onClick
-//            (View v){
-//        switch (v.getId()){
-//            case R.id.btn_login:
-//                userLogin();
-//                break;
-//            case R.id.createText_l:
-//                startActivity(new Intent(this, RegisterActivity.class));
-//                break;
-//        }
+    public void onClick
+            (View v){
+        switch (v.getId()){
+            case R.id.loginBtn_l:
+                userLogin();
+                startActivity(new Intent(this, ClerkActivity.class));
+                break;
+            case R.id.createText_l:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
+        }
     }
+}
 
 
