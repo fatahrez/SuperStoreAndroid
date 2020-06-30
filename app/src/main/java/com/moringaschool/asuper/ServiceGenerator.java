@@ -1,5 +1,5 @@
 package com.moringaschool.asuper;
 
-public interface SuperApi {
+public class ServiceGenerator {
 
 }
