@@ -1,15 +1,15 @@
-## SuperStoreAndroid
+# SuperStoreAndroid
 
 
-## this is for the developers
+# this is for the developers
 
-# Note Do not push to dev branch Delete print
+## Note Do not push to dev branch Delete print
 
-# Admin
+## Admin
 
 Email - jake@gmail.com password - testing123
 
-# API endpoints
+## API endpoints
 
 For Login
 
@@ -25,11 +25,11 @@ For product-batch
 
 For each product-batch
 
-# it won't work until you switch pk with an integer
+## it won't work until you switch pk with an integer
 
-# pk stand for primary key.
+## pk stand for primary key.
 
-# Paid or not paid each product-batch
+## Paid or not paid each product-batch
 
 Register Clerk
 
@@ -37,11 +37,11 @@ For Clerk
 
 For each Clerk
 
-# it won't work until you switch pk with an integer
+## it won't work until you switch pk with an integer
 
-# pk stand for primary key.
+## pk stand for primary key.
 
-# Activate or Deactive each Clerk
+## Activate or Deactive each Clerk
 
 Register Merchant
 
@@ -49,25 +49,25 @@ For Merchant
 
 For each Merchant
 
-# it won't work until you switch pk with an integer
+## it won't work until you switch pk with an integer
 
-# pk stand for primary key.
+## pk stand for primary key.
 
-# Register Manager
+## Register Manager
 
 For Manager
 
 For each Manager
 
-# it won't work until you switch pk with an integer
+## it won't work until you switch pk with an integer
 
-# pk stand for primary key.
+## pk stand for primary key.
 
-# Activate or Deactive each Manager
+## Activate or Deactive each Manager
 
-# Runing it on your local server
+## Runing it on your local server
 
-# Creating a virtual environment
+## Creating a virtual environment
 
 
 $ sudo apt-get install python3-venv
@@ -77,20 +77,20 @@ $ python3 -m venv virtual
 Activating the virtual environment
 
 
-# $ . virtual/bin/activate
+## $ . virtual/bin/activate
 
 Install all dependencies with the code bellow before you begin
 
-# $ pip install -r requirements.txt
+## $ pip install -r requirements.txt
 
 Setting up a database on Remotely
 First type psql in your terminal
 
-# $ psql
+## $ psql
 
 Second in the shell type CREATE DATABASE shop;
 
-# $ psql
+## $ psql
 
 psql (12.2 (Ubuntu 12.2-4))
 Type "help" for help.
@@ -98,7 +98,7 @@ Type "help" for help.
 david=# CREATE DATABASE shop;
 Conform you will know if it's successful when you see CREATE DATABASE
 
-# $ psql
+## $ psql
 
 psql (12.2 (Ubuntu 12.2-4))
 Type "help" for help.
@@ -109,9 +109,9 @@ david=#
 then you
 Create a file named .env
 
-# In that file type the code below:
+## In that file type the code below:
 
-# source virtual/bin/activate
+## source virtual/bin/activate
 
 
 export DB_NAME='shop'
