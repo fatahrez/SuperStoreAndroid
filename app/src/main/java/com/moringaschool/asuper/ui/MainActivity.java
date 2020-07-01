@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Variables
     Animation topAnim;
-    ImageView shop, checklist;
+    ImageView shop;
 
 
     @Override
@@ -31,16 +31,15 @@ public class MainActivity extends AppCompatActivity {
         topAnim= AnimationUtils.loadAnimation(this, R.anim.top_animation);
 
         //Hooks
-        checklist= findViewById(R.id.checklist);
+
         shop= findViewById(R.id.store);
 
-        checklist.setAnimation(topAnim);
         shop.setAnimation(topAnim);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent (MainActivity.this, MerchantActivity.class);
+                Intent intent = new Intent (MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
