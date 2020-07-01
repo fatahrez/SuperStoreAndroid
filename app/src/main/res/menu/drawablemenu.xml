@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/db" android:title="Dashboard" android:icon="@drawable/dashboard"/>
+    <item android:id="@+id/home" android:title="Home" android:icon="@drawable/home"/>
+    <item android:id="@+id/add" android:title="Add Clerk" android:icon="@drawable/add"/>
+    <item android:id="@+id/inventory" android:title="Inventory" android:icon="@drawable/excel"/>
+    <item android:id="@+id/settings" android:title="Settings" android:icon="@drawable/gear"/>
+    <item android:id="@+id/logout" android:title="Logout" android:icon="@drawable/logout"/>
+    <item android:id="@+id/contact" android:title="Contact Us" android:icon="@drawable/contact"/>
+</menu>

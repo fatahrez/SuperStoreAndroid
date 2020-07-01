@@ -9,12 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.moringaschool.asuper.api.ApiInstance;
 import com.moringaschool.asuper.api.RetrofitClient;
 import com.moringaschool.asuper.models.DefaultResponse;
 import com.moringaschool.asuper.R;
-import com.moringaschool.asuper.ui.ClerkActivity;
-import com.moringaschool.asuper.ui.MainActivity;
+import com.moringaschool.asuper.models.Token;
+import com.moringaschool.asuper.models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -92,20 +91,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             editTextlast_name.requestFocus();
             return;
         }
+        User user = new User();
+        user.setEmail(Email);
+        user.setPassword(Password);
+        user.setUsername(UserName);
+        user.setFirstName(FirstName);
+        user.setLastName(LastName);
+        user.setShop("Shop");
 
-        Call<DefaultResponse> call = RetrofitClient
+        Token token = new Token();
+        token.setUser(user);
+
+        Call<Token> call = RetrofitClient
                 .getInstance()
                 .getSuperApi()
-                .createClerk(Email, Password, UserName, FirstName, LastName);
+                .createClerk(token);
 
-        call.enqueue(new Callback<DefaultResponse>() {
+        call.enqueue(new Callback<Token>() {
             @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+            public void onResponse(Call<Token> call, Response<Token> response) {
 
                 if (response.code() == 201) {
 
-                    DefaultResponse defaultResponse = response.body();
-                    Toast.makeText(RegisterActivity.this, defaultResponse.getMsg(), Toast.LENGTH_LONG).show();
+                    Token token = response.body();
+//                    Toast.makeText(RegisterActivity.this, .getMsg(), Toast.LENGTH_LONG).show();
 
                 } else if (response.code() == 422) {
                     Toast.makeText(RegisterActivity.this, "User already exist", Toast.LENGTH_LONG).show();
@@ -113,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
 
             @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+            public void onFailure(Call<Token> call, Throwable t) {
 
             }
         });

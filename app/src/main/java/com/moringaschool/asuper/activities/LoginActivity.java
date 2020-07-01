@@ -17,7 +17,6 @@ import com.moringaschool.asuper.ui.ClerkActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -73,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
 
-                if (!loginResponse.isError()){
+                if (! loginResponse.isError()){
 
                     // proceed with login through the following ways
                     // save user
@@ -98,7 +97,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             (View v){
         switch (v.getId()){
             case R.id.loginBtn_l:
-                userLogin();
+                startActivity(new Intent(this, ClerkActivity.class));
+//                userLogin();
                 break;
             case R.id.createText_l:
                 startActivity(new Intent(this, RegisterActivity.class));

@@ -21,6 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--        <activity-->
+<!--            android:name=".ui.ClerkActivity"-->
+<!--            android:label="Super Store" >-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity android:name="com.moringaschool.asuper.activities.LoginActivity" android:theme="@style/AppTheme" />
         <activity android:name="com.moringaschool.asuper.activities.RegisterActivity" android:theme="@style/AppTheme" />
     </application>
