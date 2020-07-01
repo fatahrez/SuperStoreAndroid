@@ -33,17 +33,22 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
 
         drawerLayout= findViewById(R.id.drawerLayout);
         mImage= findViewById(R.id.menuImg);
+        mReports= findViewById(R.id.reports);
+        mSales= findViewById(R.id.sales);
+        mProducts= findViewById(R.id.products);
+        mClerks= findViewById(R.id.clerks);
+
+
         mImage.setOnClickListener(this);
         mReports.setOnClickListener(this);
         mSales.setOnClickListener(this);
         mProducts.setOnClickListener(this);
         mClerks.setOnClickListener(this);
+
         }
 
     @Override
     public void onClick(View v) {
-        drawerLayout.openDrawer(GravityCompat.START);
-
         if (v == mClerks) {
             Intent intent = new Intent(AdminActivity.this, Adding.class);
             startActivity(intent);
