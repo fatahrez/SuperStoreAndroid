@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import com.moringaschool.asuper.models.DefaultResponse;
 import com.moringaschool.asuper.models.LoginResponse;
 import com.moringaschool.asuper.models.Token;
+import com.moringaschool.asuper.models.Tokens;
 import com.moringaschool.asuper.models.User;
 
 import retrofit2.Call;
@@ -27,6 +28,7 @@ public interface SuperApi {
             @Field("password_l") String Password
     );
 
+    Call<Tokens> createClerk(Tokens tokens);
 }
 
 

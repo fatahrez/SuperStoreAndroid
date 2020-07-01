@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.moringaschool.asuper.R;
 import com.moringaschool.asuper.api.RetrofitClient;
 import com.moringaschool.asuper.models.LoginResponse;
+import com.moringaschool.asuper.models.Token;
+import com.moringaschool.asuper.models.Tokens;
+import com.moringaschool.asuper.models.Users;
 import com.moringaschool.asuper.ui.ClerkActivity;
 
 import retrofit2.Call;
@@ -64,28 +67,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        Call<LoginResponse> call = RetrofitClient
-                .getInstance().getSuperApi().userLogin(Email,Password);
+        Users users = new Users();
+        users.setEmail(Email);
+        users.setPassword(Password);
+        users.setShop("Shop");
 
-        call.enqueue(new Callback<LoginResponse>() {
+        Tokens tokens = new Tokens();
+        tokens.setUser(users);
+
+        Call<Tokens> call = RetrofitClient
+                .getInstance()
+                .getSuperApi()
+                .createClerk(tokens);
+
+        call.enqueue(new Callback<Tokens>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse loginResponse = response.body();
+            public void onResponse(Call<Tokens> call, Response<Tokens> response) {
 
-                if (! loginResponse.isError()){
+                if (response.code() == 201) {
 
-                    // proceed with login through the following ways
-                    // save user
-                    // open profile
+                    Tokens tokens = response.body();
+//                    Toast.makeText(RegisterActivity.this, .getMsg(), Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                } else if (response.code() == 422) {
+                    Toast.makeText(LoginActivity.this, "User already exist", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<Tokens> call, Throwable t) {
 
             }
         });
@@ -98,10 +108,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.loginBtn_l:
                 startActivity(new Intent(this, ClerkActivity.class));
-//                userLogin();
+                userLogin();
                 break;
             case R.id.createText_l:
-                startActivity(new Intent(this, RegisterActivity.class));
+                startActivity(new Intent(this,RegisterActivity.class));
                 break;
         }
     }
