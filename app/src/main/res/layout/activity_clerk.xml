@@ -104,6 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:id="@+id/payments"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -134,6 +135,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/recieved"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
@@ -166,6 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:id="@+id/supply"
                     android:orientation="vertical"
                     android:padding="16dp">
 
