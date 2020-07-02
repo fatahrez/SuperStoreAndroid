@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.moringaschool.asuper.R;
 import com.moringaschool.asuper.items.RecievedActivity;
+import com.moringaschool.asuper.requests.SendActivity;
 
 public class ClerkActivity extends AppCompatActivity {
 
@@ -33,14 +34,18 @@ public class ClerkActivity extends AppCompatActivity {
         recieved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(ClerkActivity.this,"Send request for more items",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(ClerkActivity.this, RecievedActivity.class);
+                startActivity(intent);
             }
         });
 
         supply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ClerkActivity.this,"You have clicked on supply",Toast.LENGTH_LONG).show();
+                Toast.makeText(ClerkActivity.this,"Send request for more supply",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(ClerkActivity.this, SendActivity.class);
+                startActivity(intent);
             }
         });
     }
